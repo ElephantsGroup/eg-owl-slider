@@ -17,7 +17,7 @@ use yii\web\View;
  */
 class SliderAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/elephantsgroup/yii2-owl-slider/assets';
+    public $sourcePath = '@vendor/elephantsgroup/eg-owl-slider/assets';
    
     public function init() {
         $this->jsOptions['position'] = View::POS_BEGIN;

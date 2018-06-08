@@ -45,84 +45,10 @@ class m150824_184337_create_owl_slider_table extends Migration
 			'status' => $this->smallInteger()->notNull()->defaultValue(0),
 		]);
 		$this->addForeignKey('fk_eg_owl_slides_category', '{{%eg_owl_slides}}', 'category_id', '{{%eg_owl_slides_category}}', 'id', 'SET NULL', 'CASCADE');
-
-		$this->insert('{{%auth_item}}', [
-			'name' => '/owl-slider/admin/*',
-			'type' => 2,
-			'created_at' => 1467629406,
-			'updated_at' => 1467629406
-		]);
-		$this->insert('{{%auth_item}}', [
-			'name' => '/owl-slider/category-admin/*',
-			'type' => 2,
-			'created_at' => 1467629406,
-			'updated_at' => 1467629406
-		]);
-		$this->insert('{{%auth_item}}', [
-			'name' => 'owl_slider_management',
-			'type' => 2,
-			'created_at' => 1467629406,
-			'updated_at' => 1467629406
-		]);
-		$this->insert('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_management',
-			'child' => '/owl-slider/admin/*',
-		]);
-		$this->insert('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_management',
-			'child' => '/owl-slider/category-admin/*',
-		]);
-		$this->insert('{{%auth_item}}', [
-			'name' => 'owl_slider_manager',
-			'type' => 1,
-			'created_at' => 1467629406,
-			'updated_at' => 1467629406
-		]);
-		$this->insert('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_manager',
-			'child' => 'owl_slider_management',
-		]);
-		$this->insert('{{%auth_item_child}}', [
-			'parent' => 'super_admin',
-			'child' => 'owl_slider_manager',
-		]);
     }
     
     public function safeDown()
     {
-		$this->delete('{{%auth_item}}', [
-			'name' => '/owl-slider/admin/*',
-			'type' => 2,
-		]);
-		$this->delete('{{%auth_item}}', [
-			'name' => '/owl-slider/category-admin/*',
-			'type' => 2,
-		]);
-		$this->delete('{{%auth_item}}', [
-			'name' => 'owl_slider_management',
-			'type' => 2,
-		]);
-		$this->delete('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_management',
-			'child' => '/owl-slider/admin/*',
-		]);
-		$this->delete('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_management',
-			'child' => '/owl-slider/category-admin/*',
-		]);
-		$this->delete('{{%auth_item}}', [
-			'name' => 'owl_slider_manager',
-			'type' => 1,
-		]);
-		$this->delete('{{%auth_item_child}}', [
-			'parent' => 'owl_slider_manager',
-			'child' => 'owl_slider_management',
-		]);
-		$this->delete('{{%auth_item_child}}', [
-			'parent' => 'super_admin',
-			'child' => 'owl_slider_manager',
-		]);
-
 		$this->dropForeignKey('fk_eg_owl_slides_category', '{{%eg_owl_slides}}');
 		$this->dropTable('{{%eg_owl_slides}}');
 		$this->dropTable('{{%eg_owl_slides_category}}');
